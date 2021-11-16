@@ -1,0 +1,71 @@
+const menuItems = {
+
+   Home: {
+
+      button: '#Home',
+
+      underline: '#HomeLine',
+
+      //contentBox: '#HomeBox'
+
+   },
+
+   Shop: {
+
+      button: '#Shop',
+
+      underline: '#ShopLine',
+
+      contentBox: '#ShopBox'
+
+   },
+
+   FAQ: {
+
+      button: '#FAQ',
+
+      underline: '#FAQLine',
+
+      //contentBox: '#kidsBox'
+
+   }, 
+
+   About: {
+
+      button: '#About',
+
+      underline: '#AboutLine',
+
+      //contentBox: '#kidsBox'
+
+   	},
+ 
+}
+
+$w.onReady(function () {
+	initMegaMenu()
+});
+
+
+function initMegaMenu() {
+
+   for (let i in menuItems) {
+
+      $w(menuItems[i].button).onMouseIn(() => {
+			$w(menuItems[i].underline).show();
+			$w(menuItems[i].contentBox).expand();
+
+		  
+        //openRelevantPanel(menuItems[i]);
+
+      });
+
+
+      $w(menuItems[i].button).onMouseOut(() => {
+			 $w(menuItems[i].underline).hide(2);
+			 $w(menuItems[i].contentBox).collapse(2);
+        //openRelevantPanel();
+
+      });
+	}
+}
