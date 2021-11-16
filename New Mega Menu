@@ -1,0 +1,63 @@
+import wixAnimations from 'wix-animations';
+
+ 
+
+$w.onReady(function () {
+
+   activeMenu();
+
+});
+
+ 
+
+function activeMenu() {
+
+   const menuButton = $w('#menuButton');
+
+   const dropdwonMenu = $w('#dropdownMenu');
+
+   const dropdownBoxHeight = 360;
+
+   const dropdownAnimation = wixAnimations.timeline().add(dropdwonMenu, { y: 0, duration: 500 });
+
+ 
+
+   wixAnimations.timeline().add(dropdwonMenu, { y: -dropdownBoxHeight }).play();
+
+ 
+
+   menuButton.onClick(() => {
+
+      dropdwonMenu.collapsed ? openMenu() : closeMenu();
+
+   });
+
+ 
+
+   dropdownAnimation.onReverseComplete(() => {
+
+      dropdwonMenu.collapse();
+
+   });
+
+ 
+
+   function openMenu() {
+
+      dropdwonMenu.expand().then(() => {
+
+         dropdownAnimation.play();
+
+      })
+
+   }
+
+ 
+
+   function closeMenu() {
+
+      dropdownAnimation.reverse();
+
+   }
+
+}
